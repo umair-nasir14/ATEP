@@ -1,4 +1,4 @@
-Algorithm,Fitness,Max,Mean
+Algorithm,Fitness,Max,Environments
 SBT,Above 300,60,30
 SBT,200-300,40,60
 SBT,Below 200,0,10
