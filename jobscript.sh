@@ -1,8 +1,8 @@
 #!/bin/bash
-#PBS -N NP_Fitness_new_run
-#PBS -l select=25:ncpus=24:mpiprocs=1
+#PBS -N atep_run
+#PBS -l select=11:ncpus=24:mpiprocs=1
 #PBS -P xxx1111
-#PBS -q large
+#PBS -q xxxx
 #PBS -l walltime=96:00:00
 #PBS -m abe
 #PBS -M xxxx@yyyy.com
