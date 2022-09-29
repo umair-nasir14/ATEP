@@ -1,4 +1,4 @@
-name: atep-env
+name: /home/mnasir/poet
 channels:
   - conda-forge
   - defaults
