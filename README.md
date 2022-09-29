@@ -12,4 +12,4 @@
 qsub jobscript.sh
 ```
 
-### To visualize use `visuals.ipynb`.
+### - To visualize use `visuals.ipynb`.
