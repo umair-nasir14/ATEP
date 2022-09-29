@@ -53,6 +53,7 @@ mkdir -p /logs/$experiment
 
 python -u master.py \
   /logs/$experiment \
+  --transfer_type="SBT"
   --delta_threshold=3.0 \
   --neat_population=1000 \
   --c1=1.0 \
