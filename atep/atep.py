@@ -245,7 +245,7 @@ class ATEP:
 
     def transfer(self, propose_with_adam, checkpointing, reset_optimizer, transfer_type):
         
-        if transfer_type == 'fitness':
+        if transfer_type == 'FBT':
             logger.info('Computing direct transfers...')
             proposal_targets = {}
             for source_optim in self.optimizers.values():
@@ -285,7 +285,7 @@ class ATEP:
                         stats=task, keyword='proposal',
                         source_optim=source_optim)
 
-        elif transfer_type == "species":
+        elif transfer_type == "SBT":
 
             logger.info('Computing specie transfers...')
             for source_optim in self.optimizers.values():
@@ -334,7 +334,7 @@ class ATEP:
                             stats=task, keyword='specie_and_fitness',
                             source_optim=source_optim)
         
-        elif transfer_type == 'random':
+        elif transfer_type == 'Random':
 
             source_optim = {}
 
@@ -515,12 +515,11 @@ class ATEP:
                  check_pointing_file='checkpoint_400',
                  reset_optimizer=True):
 
-        current_iter = '9958'
-        transfer_type='random'
+        
         func_evals = 0
         if starting_from_checkpoint:
             random.seed(self.args.master_seed)
-            with open('/mnt/lustre/users/mnasir/neat-poet-master/poet_distributed/checkpoint_fitness_n%_'+current_iter, 'rb') as f:
+            with open('/mnt/lustre/users/mnasir/neat-poet-master/poet_distributed/'+check_pointing_file, 'rb') as f:
                 func_evals, self.ANNECS,self.optimizers, self.archived_optimizers,self.env_registry,self.env_archive, iter = pickle.load(f)
             
         else:
@@ -537,13 +536,13 @@ class ATEP:
 
             if len(self.optimizers) > 1 and iteration % steps_before_transfer == 0:
 
-                if transfer_type == "no_transfer":
+                if self.args.transfer_type == "no_transfer":
                     pass
                 else:
                     self.transfer(propose_with_adam=propose_with_adam,
                             checkpointing=checkpointing,
                             reset_optimizer=reset_optimizer,
-                            transfer_type=transfer_type)
+                            transfer_type=self.args.transfer_type)
                                 
                 
             if iteration % steps_before_transfer == 0:
@@ -554,6 +553,6 @@ class ATEP:
             if checkpointing and iteration % 51 == 0:
                 random.seed(self.args.master_seed)
                 optim_pack = (func_evals, self.ANNECS, self.optimizers,self.archived_optimizers,self.env_registry,self.env_archive,iteration)
-                with open('checkpoint_'+transfer_type+'_' + str(iteration), 'wb') as f:
+                with open('checkpoint_'+self.args.transfer_type+'_' + str(iteration), 'wb') as f:
                     pickle.dump(optim_pack, f)
 

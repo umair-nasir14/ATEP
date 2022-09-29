@@ -50,6 +50,7 @@ def main():
     parser.add_argument('--bias_mutation_large_probability', type=float, default=0.85)
     
     ### General params
+    parser.add_argument('--transfer_type',type=str,default='SBT')
     parser.add_argument('--n_iterations', type=int, default=200)
     parser.add_argument('--steps_before_transfer', type=int, default=25)
     parser.add_argument('--master_seed', type=int, default=111)
