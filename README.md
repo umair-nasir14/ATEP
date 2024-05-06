@@ -1,5 +1,5 @@
 # ATEP
-This repository contains code to reproduce all of our experiments.
+This repository contains code for [Augmentative Topology Agents For Open-Ended Learning](https://dl.acm.org/doi/abs/10.1145/3583133.3590576).
 The file structure is as follows:
 ```
 ├── atep                    -> The main ATEP code
