@@ -19,3 +19,14 @@ qsub jobscript.sh
 ```
 
 To visualise and recreate the plots, use `visuals.ipynb`.
+
+If you use the repository, please cite:
+```
+@inproceedings{nasir2023augmentative,
+  title={Augmentative topology agents for open-ended learning},
+  author={Nasir, Muhammad and Beukman, Michael and James, Steven and Cleghorn, Christopher},
+  booktitle={Proceedings of the Companion Conference on Genetic and Evolutionary Computation},
+  pages={671--674},
+  year={2023}
+}
+```
